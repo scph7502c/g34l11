@@ -1,10 +1,15 @@
 package task3;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.api.BeforeEach;
+
 import org.junit.jupiter.params.provider.MethodSource;
 
+import java.util.stream.Stream;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 public class TextLengthTest {
 
@@ -15,8 +20,8 @@ public class TextLengthTest {
         textLengthCheck = new TextLength();
     }
 
-    static Object[][] textProvider() {
-        return new Object[][]{{"Zadanie", 7}, {"Domowe", 6}, {"Java", 4}, {"", 0}, {null, 0}};
+    static Stream<Arguments> textProvider() {
+        return Stream.of(arguments("Zadanie", 7), arguments("Domowe", 6), arguments("Java", 4), arguments("", 0), arguments(null, 0));
     }
 
     @ParameterizedTest
