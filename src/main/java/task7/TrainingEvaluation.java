@@ -10,8 +10,8 @@ public class TrainingEvaluation {
         return calculateWeightedAverage(lengthScore, caloriesScore, heartRateScore);
     }
 
-//    private
-    double evaluateTrainingLength(int trainingLength) {
+
+    private double evaluateTrainingLength(int trainingLength) {
         if (trainingLength < 30) {
             return 1;
         } else if (trainingLength <= 60) {
@@ -21,8 +21,7 @@ public class TrainingEvaluation {
         }
     }
 
-//    private
-    double evaluateBurnedCalories(int burnedCalories) {
+    private double evaluateBurnedCalories(int burnedCalories) {
         if (burnedCalories <= 300) {
             return 1;
         } else if (burnedCalories < 400) {
@@ -32,8 +31,7 @@ public class TrainingEvaluation {
         }
     }
 
-//    private
-    double evaluateAverageHeartRate(int averageHeartRate) {
+    private double evaluateAverageHeartRate(int averageHeartRate) {
         if (averageHeartRate < 160) {
             return 1;
         } else if (averageHeartRate <= 175) {
@@ -43,8 +41,7 @@ public class TrainingEvaluation {
         }
     }
 
-//    private
-    double calculateWeightedAverage(double lengthScore, double caloriesScore, double heartRateScore) {
+    private double calculateWeightedAverage(double lengthScore, double caloriesScore, double heartRateScore) {
         double totalWeight = 1 + 2 + 3; // Suma wag
         return (lengthScore * 1 + caloriesScore * 2 + heartRateScore * 3) / totalWeight;
     }

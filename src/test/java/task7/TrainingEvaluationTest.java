@@ -1,6 +1,5 @@
 package task7;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -8,25 +7,17 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TrainingEvaluationTest {
 
-    private TrainingEvaluation trainingEvaluation;
-
-    @BeforeEach
-    void setUp() {
-        trainingEvaluation = new TrainingEvaluation();
-    }
-
     @ParameterizedTest
     @CsvSource({
-            "25, 200, 155, Bardzo dobra",   // Test dla treningu o niskiej efektywności
-            "70, 550, 180, Niska",   // Test dla treningu o niskiej efektywności
-            "70, 500, 180, Bardzo dobra",  // Test dla treningu o wysokiej efektywności
-            "60, 300, 160, Dobra"    // Test dla treningu o średniej efektywności
-
+            "15, 250, 150, Niska",
+            "45, 350, 165, Dobra",
+            "75, 450, 180, Doskonała"
     })
-    void testEvaluateTraining(int trainingLength, int burnedCalories, int averageHeartRate, String expectedEfficiency) {
-        double score = trainingEvaluation.evaluateTraining(trainingLength, burnedCalories, averageHeartRate);
-        String actualEfficiency = trainingEvaluation.evaluateTrainingEfficiency(score);
+    public void testTrainingEvaluation(int length, int calories, int heartRate, String expectedEfficiency) {
+        TrainingEvaluation evaluation = new TrainingEvaluation();
+        double score = evaluation.evaluateTraining(length, calories, heartRate);
+        String efficiency = evaluation.evaluateTrainingEfficiency(score);
 
-        assertEquals(expectedEfficiency, actualEfficiency);
+        assertEquals(expectedEfficiency, efficiency);
     }
 }
