@@ -11,7 +11,7 @@ public class TrainingEvaluation {
     }
 
 
-    private double evaluateTrainingLength(int trainingLength) {
+    double evaluateTrainingLength(int trainingLength) {
         if (trainingLength < 30) {
             return 1;
         } else if (trainingLength <= 60) {
@@ -21,7 +21,7 @@ public class TrainingEvaluation {
         }
     }
 
-    private double evaluateBurnedCalories(int burnedCalories) {
+    double evaluateBurnedCalories(int burnedCalories) {
         if (burnedCalories <= 300) {
             return 1;
         } else if (burnedCalories < 400) {
@@ -31,25 +31,26 @@ public class TrainingEvaluation {
         }
     }
 
-    private double evaluateAverageHeartRate(int averageHeartRate) {
+    double evaluateAverageHeartRate(int averageHeartRate) {
         if (averageHeartRate < 160) {
-            return 1;
+            return 3;
         } else if (averageHeartRate <= 175) {
             return 2;
         } else {
-            return 3;
+            return 1;
         }
     }
 
     private double calculateWeightedAverage(double lengthScore, double caloriesScore, double heartRateScore) {
-        double totalWeight = 1 + 2 + 3; // Suma wag
-        return (lengthScore * 1 + caloriesScore * 2 + heartRateScore * 3) / totalWeight;
+        double totalWeight = 1 + 2 + 3;
+        double weightedAverage = (lengthScore * 1 + caloriesScore * 2 + heartRateScore * 3) / totalWeight;
+        return Math.round(weightedAverage * 10.0) / 10.0;
     }
 
     public String evaluateTrainingEfficiency(double trainingScore) {
         if (trainingScore < 1.2) {
             return "Niska";
-        } else if (trainingScore < 2.0) {
+        } else if (trainingScore >= 1.2 && trainingScore < 2.0) {
             return "Dobra";
         } else if (trainingScore < 3.0) {
             return "Bardzo dobra";
