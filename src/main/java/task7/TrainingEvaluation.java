@@ -47,12 +47,14 @@ public class TrainingEvaluation {
         return Math.round(weightedAverage * 10.0) / 10.0;
     }
 
-    public String evaluateTrainingEfficiency(double trainingScore) {
-        if (trainingScore < 1.2) {
+    public String evaluateTrainingEfficiency(int length, int calories, int heartRate) {
+        double score = evaluateTraining(length, calories, heartRate);
+
+        if (score < 1.2) {
             return "Niska";
-        } else if (trainingScore >= 1.2 && trainingScore < 2.0) {
+        } else if (score >= 1.2 && score < 2.0) {
             return "Dobra";
-        } else if (trainingScore < 3.0) {
+        } else if (score < 3.0) {
             return "Bardzo dobra";
         } else {
             return "Doskonała";
