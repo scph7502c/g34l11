@@ -13,8 +13,6 @@ public class CurrencyCalculatorTest {
         CurrencyRateService rateService = mock(CurrencyRateService.class);
 
         when(rateService.getExchangeRate(Currency.PLN, Currency.EUR)).thenReturn(0.22);
-        when(rateService.getExchangeRate(Currency.PLN, Currency.USD)).thenReturn(0.25);
-        when(rateService.getExchangeRate(Currency.PLN, Currency.GBP)).thenReturn(0.19);
 
         CurrencyCalculator calculator = new CurrencyCalculator(rateService);
 
